@@ -18,10 +18,19 @@ dx = 0.001
 x = np.arange(x_min, x_max+dx, dx)
 y = f(x)
 
-res = {
-    "x": x.tolist(),
-    "y": y.tolist(),
-}
+x_array = x.tolist()
+y_array = y.tolist()
+
+res = []
+
+for i in range(len(y.tolist())):
+    res.append(
+        {
+            "x": x_array[i],
+            "y": y_array[i],
+        })
+
+
 
 path = pathlib.Path("results")  #извлечем директорию "results"
 path.mkdir(exist_ok=True)   #создаем новый каталог по заданному пути, exist_ok=True, то исключения FileExistsError будут игнорироваться(поднимается при попытке создать файл или каталог, который уже существует)
